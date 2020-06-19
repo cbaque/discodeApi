@@ -1,0 +1,286 @@
+{
+    "tipo_movimiento": {
+        "IN": {
+            "tipo_chasis": {
+                "SC": {
+                    "tipo_segmento": {
+                        "SIN-SEGMENTO" : {
+                            "cabecera_segmento": {
+                                "estado_cabezal": true,
+                                "estado_equipo": false,
+                                "clientes": false,
+                                "sellos": false,
+                                "generador": false,
+                                "req_seguridad": false,
+                                "req_operacion": false
+                            },
+                            "controles": {
+                                "cliente": false,
+                                "contenedor": false,
+                                "orden": false,
+                                "equipo": false,
+                                "patio": false,
+                                "cas": false
+                            }                            
+                        },
+                        "SEG-RET": {},
+                        "SEG-ENT": {},
+                        "SEG-VAC": {},
+                        "SIN-CONTENEDOR-SIN-OPERACION": {},
+                        "SIN-CONTENEDOR-CON-OPERACION": {
+                            "cabecera_segmento": {
+                                "estado_cabezal": true,
+                                "estado_equipo": false,
+                                "clientes": false,
+                                "sellos": false,
+                                "generador": false,
+                                "req_seguridad": false,
+                                "req_operacion": false
+                            },
+                            "controles": {
+                                "cliente": false,
+                                "contenedor": false,
+                                "orden": false,
+                                "equipo": false,
+                                "patio": false,
+                                "cas": false
+                            }                             
+                        }
+                    }
+                },
+                "CC": {
+                    "tipo_segmento": {
+                        "SIN-SEGMENTO" : {},
+                        "SEG-RET": {
+                            "cabecera_segmento": {
+                                "estado_cabezal": true,
+                                "estado_equipo": true,
+                                "clientes": false,
+                                "sellos": false,
+                                "generador": false,
+                                "req_seguridad": false,
+                                "req_operacion": false                                
+                            },
+                            "controles": {
+                                "cliente": false,
+                                "contenedor": false,
+                                "orden": false,
+                                "equipo": false,
+                                "patio": false,
+                                "cas": false
+                            }
+                        },
+                        "SEG-ENT": {
+                            "cabecera_segmento": {
+                                "estado_cabezal": true,
+                                "estado_equipo": false,
+                                "clientes": true,
+                                "sellos": true,
+                                "generador": true,
+                                "req_seguridad": true,
+                                "req_operacion": true
+                            },
+                            "controles": {
+                                "cliente": true,
+                                "contenedor": true,
+                                "orden": true,
+                                "equipo": true,
+                                "patio": true,
+                                "cas": true
+                            }                            
+                        },
+                        "SEG-VAC": {
+                            "cabecera_segmento": {
+                                "estado_cabezal": true,
+                                "estado_equipo": true,
+                                "clientes": true,
+                                "sellos": true,
+                                "generador": true,
+                                "req_seguridad": true,
+                                "req_operacion": true                                
+                            },
+                            "controles": {
+                                "cliente": true,
+                                "contenedor": true,
+                                "orden": true,
+                                "equipo": true,
+                                "patio": true,
+                                "cas": true
+                            }                            
+                        },
+                        "SIN-CONTENEDOR-SIN-OPERACION": {
+                            "cabecera_segmento": {
+                                "estado_cabezal": true,
+                                "estado_equipo": true,
+                                "clientes": false,
+                                "sellos": false,
+                                "generador": false,
+                                "req_seguridad": false,
+                                "req_operacion": false                                
+                            },
+                            "controles": {
+                                "cliente": false,
+                                "contenedor": false,
+                                "orden": false,
+                                "equipo": false,
+                                "patio": false,
+                                "cas": false
+                            }                            
+                        },
+                        "SIN-CONTENEDOR-CON-OPERACION": {
+                            "cabecera_segmento": {
+                                "estado_cabezal": true,
+                                "estado_equipo": true,
+                                "clientes": false,
+                                "sellos": false,
+                                "generador": false,
+                                "req_seguridad": false,
+                                "req_operacion": false                                
+                            },
+                            "controles": {
+                                "cliente": false,
+                                "contenedor": false,
+                                "orden": false,
+                                "equipo": false,
+                                "patio": false,
+                                "cas": false
+                            }                             
+                        }                        
+                    }
+                }
+            }        
+        },
+        "OUT": {
+            "tipo_chasis": {
+                "SC": {
+                    "tipo_segmento": {
+                        "SIN-SEGMENTO" : {
+                            "cabecera_segmento": {
+                                "estado_cabezal": true,
+                                "estado_equipo": false,
+                                "clientes": false,
+                                "sellos": false,
+                                "generador": false,
+                                "req_seguridad": false,
+                                "req_operacion": false
+                            },
+                            "controles": {
+                                "cliente": false,
+                                "contenedor": false,
+                                "orden": false,
+                                "equipo": false,
+                                "patio": false,
+                                "cas": false
+                            }                            
+                        },
+                        "SEG-RET": {},
+                        "SEG-ENT": {},
+                        "SEG-VAC": {},
+                        "SIN-CONTENEDOR-SIN-OPERACION": {},
+                        "SIN-CONTENEDOR-CON-OPERACION": {
+                            "cabecera_segmento": {
+                                "estado_cabezal": true,
+                                "estado_equipo": false,
+                                "clientes": false,
+                                "sellos": false,
+                                "generador": false,
+                                "req_seguridad": false,
+                                "req_operacion": false
+                            },
+                            "controles": {
+                                "cliente": false,
+                                "contenedor": false,
+                                "orden": false,
+                                "equipo": false,
+                                "patio": false,
+                                "cas": false
+                            }                              
+                        }
+                    }
+                },
+                "CC": {
+                    "tipo_segmento": {
+                        "SIN-SEGMENTO" : {},
+                        "SEG-RET": {},
+                        "SEG-ENT": {
+                            "cabecera_segmento": {
+                                "estado_cabezal": true,
+                                "estado_equipo": true,
+                                "clientes": true,
+                                "sellos": true,
+                                "generador": true,
+                                "req_seguridad": true,
+                                "req_operacion": true
+                            },
+                            "controles": {
+                                "cliente": true,
+                                "contenedor": true,
+                                "orden": true,
+                                "equipo": true,
+                                "patio": true,
+                                "cas": true
+                            }                            
+                        },
+                        "SEG-VAC": {
+                            "cabecera_segmento": {
+                                "estado_cabezal": true,
+                                "estado_equipo": true,
+                                "clientes": true,
+                                "sellos": true,
+                                "generador": true,
+                                "req_seguridad": true,
+                                "req_operacion": true                                
+                            },
+                            "controles": {
+                                "cliente": true,
+                                "contenedor": true,
+                                "orden": true,
+                                "equipo": true,
+                                "patio": true,
+                                "cas": true
+                            }                            
+                        },
+                        "SIN-CONTENEDOR-SIN-OPERACION": {
+                            "cabecera_segmento": {
+                                "estado_cabezal": true,
+                                "estado_equipo": false,
+                                "clientes": false,
+                                "sellos": false,
+                                "generador": false,
+                                "req_seguridad": false,
+                                "req_operacion": false                                
+                            },
+                            "controles": {
+                                "cliente": false,
+                                "contenedor": false,
+                                "orden": false,
+                                "equipo": false,
+                                "patio": false,
+                                "cas": false
+                            }                            
+                        },
+                        "SIN-CONTENEDOR-CON-OPERACION": {
+                            "cabecera_segmento": {
+                                "estado_cabezal": true,
+                                "estado_equipo": true,
+                                "clientes": true,
+                                "sellos": false,
+                                "generador": true,
+                                "req_seguridad": true,
+                                "req_operacion": true                                
+                            },
+                            "controles": {
+                                "cliente": true,
+                                "contenedor": true,
+                                "orden": true,
+                                "equipo": true,
+                                "patio": true,
+                                "cas": true
+                            }                             
+                        }                        
+                    }
+                }
+            }
+        }
+    }
+}
