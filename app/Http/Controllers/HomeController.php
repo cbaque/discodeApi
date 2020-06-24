@@ -27,4 +27,11 @@ class HomeController extends Controller
         return response_data($response, 200, $message, $route);
     }
 
+    public function Get_ProductosImages($producto){
+        $route      = Route::getFacadeRoot()->current()->uri();
+        $message    = config('global.msg_success');
+        $response   = DB::connection('mysql')->select("call sp_get_produtos_images( ? )", [ $producto ]);
+        return response_data($response, 200, $message, $route);
+    }    
+
 }

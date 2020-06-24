@@ -17,7 +17,7 @@ Route::group([
     'prefix' => 'home', 'middleware' => 'cors'
 ], function () {
     Route::get('productos', 'HomeController@Get_ProductosCliente');
-    Route::get('productos/images', 'HomeController@Get_ProductosImages');
+    Route::get('productos/images/{producto}', 'HomeController@Get_ProductosImages');
 });
 
 
