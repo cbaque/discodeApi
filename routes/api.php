@@ -41,3 +41,9 @@ Route::group([
     Route::post('create', 'ProductoController@Post_Create');
     Route::get('lista', 'ProductoController@Get_ListaProductos');
 });
+
+Route::group([
+    'prefix' => 'email', 'middleware' => 'cors'
+], function () {
+    Route::post('send', 'EmailController@Post_Send');
+});
