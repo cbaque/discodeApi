@@ -37,12 +37,13 @@ class EmailController extends Controller
     public function sendMailQuotation(Request $request)
     {
         $subject = "Cotización";
-        $for = "emilys.beltran.1995@gmail.com";
+        $for = "claudio.sys16@gmail.com";
+        // var_dump( config('mail.username') ); die();
 
         try
         {
             Mail::send('email',$request->all(), function($msj) use($subject,$for){
-                $msj->from(env('MAIL_USERNAME'),"Discode web");
+                $msj->from( config('mail.username'),"Discode web");
                 $msj->subject($subject);
                 $msj->to($for);
             });
