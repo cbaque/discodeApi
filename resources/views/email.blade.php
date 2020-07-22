@@ -22,12 +22,12 @@
     <tbody>
         <tr>
             <th>Descripcion</th>
-            <th>Precio</th>
+            <th>Cantidad</th>
         </tr>
         @foreach ($cart_products as $product)
             <tr>
                 <td>{{ $product['producto'] }}</td>
-                <td>${{ round($product['precio'], 2) }}</td>
+                <td>{{ $product['quantity'] }}</td>
             </tr>
         @endforeach
     </tbody>
