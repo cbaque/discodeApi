@@ -38,7 +38,7 @@ class EmailController extends Controller
     {
         $subject = "Solicitud de cotización";
         $for = config('mail.username');
-
+        //var_dump(config('mail.username'));//usa postman porfa para versi sale algun error
         try
         {
             Mail::send('email',$request->all(), function($msj) use($subject,$for,$request){
@@ -50,6 +50,7 @@ class EmailController extends Controller
 
             return true;
         } catch (\Exception $e) {
+            var_dump( $e->getMessage() );
             return false;
         }
     }
