@@ -40,6 +40,7 @@ Route::group([
 ], function () {
     Route::post('create', 'ProductoController@Post_Create');
     Route::get('lista', 'ProductoController@Get_ListaProductos');
+    Route::get('images/{producto}', 'ProductoController@Get_ListaProductoImages');
 });
 
 Route::group([
