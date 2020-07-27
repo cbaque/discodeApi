@@ -26,42 +26,27 @@ class AuthController extends Controller
     public function login(Request $request)
     {
 
-        $usuario = $request->user;
+        $usuario = $request->username;
         $contrasenia = $request->password;
-        $movil = $request->movil;
 
-        $data = DB::connection('mysql')->select("call sp_login(?,?,?)", [
+        $data = DB::connection('mysql')->select("call sp_login(?,?)", [
             $usuario,
-            $contrasenia,
-            $movil
+            $contrasenia
         ]);
 
-        $data = $data[0];
-
-        $message = $data->_mensaje;
-
-        if ($data->_error ==  1) {
+        if (empty($data)) {
             $route = Route::getFacadeRoot()->current()->uri();
-            return response_data([], 500, $message, $route);
+            return response_data("not_login", 200, "Credenciales inválidas", $route);
         }
 
-        $hash_contrasenia = $data->contrasenia;
-        if ( !Hash::check( trim($contrasenia), $hash_contrasenia ) ) {
-            $route = Route::getFacadeRoot()->current()->uri();
-            $message = config('global.msg_nopassword');
-            return response_data([], 500, $message, $route);            
-        }        
-
         $user = new User();
-        $user->id_usuario =  $data->id_usuario;
-        $user->contrasenia =  $data->contrasenia;
-        $user->username     =  $data->username;
-        $user->email        =  $data->email;
-
-        $token = JWTAuth::fromUser($user);
+        $user->id_usuario =  $data[0]->id_usuario;
+        $user->contrasenia =  $data[0]->contrasenia;
+        $user->username     =  $data[0]->username;
+        $user->email        =  $data[0]->email;
 
         $token = auth()->login($user);
-
+        $message = "login_valid";
         return $this->respondWithToken($token, $message);
     }
 
@@ -109,12 +94,12 @@ class AuthController extends Controller
         $token = JWTAuth::fromUser($user);
 
         // $token = auth()->claims(['authorities' => [
-        //     'ROLE_USER', 
+        //     'ROLE_USER',
         //     'ROLE_USER2'
         // ]])->login($user);
 
-        return $this->respondWithToken($token, $message);      
-    }    
+        return $this->respondWithToken($token, $message);
+    }
     /***************************************************************************** */
     /**
      * Get the authenticated User.
@@ -125,7 +110,7 @@ class AuthController extends Controller
     {
 
         return response()->json(auth()->user());
-        // return response_data( auth()->user() , 200, 'Ok',  Route::getFacadeRoot()->current()->uri()); 
+        // return response_data( auth()->user() , 200, 'Ok',  Route::getFacadeRoot()->current()->uri());
     }
     /***************************************************************************** */
     public function payload()
@@ -139,7 +124,7 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function logout()
-    {   
+    {
         $route = Route::getFacadeRoot()->current()->uri();
         $message = config('global.msg_logout');
         return response_data([], 200, $message, $route);

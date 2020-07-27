@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
-    protected $table = 'tb_usuarios';
+    protected $table = 'dis_usuarios';
     protected $primaryKey = 'id_usuario';
     protected $connection = 'mysql';
     /**
@@ -21,7 +21,7 @@ class User extends Authenticatable implements JWTSubject
     protected $fillable = [
         //'usuario', 'contrasena'
         // 'nombre', 'username', 'id', 'mail', 'mensaje', 'error'
-        'username', 'contrasenia', 'email', 'id_usuario'
+        'id_usuario', 'username', 'contrasenia', 'email'
     ];
 
     /**
