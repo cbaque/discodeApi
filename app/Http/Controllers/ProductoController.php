@@ -136,6 +136,11 @@ class ProductoController extends Controller
                 $file = uniqid() . '.'.$image_type;
                 \Storage::disk('local')->put($file,  $image_base64 );
 
+                $response = DB::connection('mysql')->update("call sp_productos_images(?,?)", [
+                    $id
+                    ,$file
+                ]);
+
             }
 
 
