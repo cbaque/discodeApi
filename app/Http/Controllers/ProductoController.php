@@ -34,8 +34,8 @@ class ProductoController extends Controller
         $images         = $request->image;
 
         DB::beginTransaction();
-        try 
-        {   
+        try
+        {
 
             $response = DB::connection('mysql')->select("call sp_productos(?,?,?,?,?,?)", [
                 $name
@@ -46,14 +46,14 @@ class ProductoController extends Controller
                 ,$cantidad
             ]);
 
-            $producto_id = $response[0]->producto;            
+            $producto_id = $response[0]->producto;
 
             foreach ($images as $key => $value) {
                 $img = $value['image'];
                 $image_parts = explode(";base64,", $img);
                 $image_type_aux = explode("image/", $image_parts[0]);
                 $image_type = $image_type_aux[1];
-                $image_base64 = base64_decode($image_parts[1]); 
+                $image_base64 = base64_decode($image_parts[1]);
 
                 $file = uniqid() . '.'.$image_type;
                 \Storage::disk('local')->put($file,  $image_base64 );
@@ -62,7 +62,7 @@ class ProductoController extends Controller
                 $response = DB::connection('mysql')->update("call sp_productos_images(?,?)", [
                     $producto_id
                     ,$file
-                ]);                
+                ]);
             }
 
 
@@ -74,16 +74,80 @@ class ProductoController extends Controller
             DB::rollback();
             // guardamos errores
 
-            // DB::connection('mysql')->select("call sp_error(?,?,?)", 
+            // DB::connection('mysql')->select("call sp_error(?,?,?)",
             // [
             //     $user->id_usuario
             //     ,$user->username
             //     ,$message
-            // ]);            
+            // ]);
 
         }
 
-        return response_data($message, $status, $message, $route);   
+        return response_data($message, $status, $message, $route);
+    }
+
+    public function Post_Edit(Request $request)
+    {
+
+        // $user           = auth()->user();
+        $route          = Route::getFacadeRoot()->current()->uri();
+        $response       = 1;
+        $message        = 'Producto Modificado Correctamente';
+        $status         = 500;
+
+        $id         	= isset($request->id_producto) ? $request->id_producto : null;
+        $name         	= isset($request->name) ? $request->name : null;
+        $price       	= isset($request->price) ? $request->price : null;
+        $categoria     	= isset($request->categoria) ? $request->categoria : null;
+        $subcategoria   = isset($request->subcategoria) ? $request->subcategoria : null;
+        $cantidad       = isset($request->cantidad) ? $request->cantidad : null;
+        $description    = isset($request->description) ? $request->description : null;
+        $images         = $request->image;
+
+        DB::beginTransaction();
+        try
+        {
+
+            $response = DB::connection('mysql')
+                ->select("update dis_productos set
+                                id_categoria = ?,
+                                id_subcategoria = ?,
+                                nombre = ?,
+                                descripcion = ?,
+                                precio = ?,
+                                stock = ?
+                           where id_producto = ?", [
+                $categoria
+                ,$subcategoria
+                ,$name
+                ,$description
+                ,$price
+                ,$cantidad
+                ,$id
+            ]);
+
+            foreach ($images as $key => $value) {
+                $img = $value['image'];
+                $image_parts = explode(";base64,", $img);
+                $image_type_aux = explode("image/", $image_parts[0]);
+                $image_type = $image_type_aux[1];
+                $image_base64 = base64_decode($image_parts[1]);
+
+                $file = uniqid() . '.'.$image_type;
+                \Storage::disk('local')->put($file,  $image_base64 );
+
+            }
+
+
+            $status         = 200;
+            DB::commit();
+        } catch (\Exception $e) {
+            $message =  $e->getMessage();
+            DB::rollback();
+
+        }
+
+        return response_data($message, $status, $message, $route);
     }
 
     public function Get_ListaProductos(){
@@ -98,9 +162,9 @@ class ProductoController extends Controller
         $route = Route::getFacadeRoot()->current()->uri();
         $message = config('global.msg_success');
         $response = DB::connection('mysql')->select("call sp_get_produtos_images(?)", [ $producto ] );
-        return response_data($response, 200, $message, $route);     
+        return response_data($response, 200, $message, $route);
 
-    }    
+    }
 
 
 }

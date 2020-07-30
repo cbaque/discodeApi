@@ -39,6 +39,7 @@ Route::group([
     'prefix' => 'producto', 'middleware' => ['cors']
 ], function () {
     Route::post('create', 'ProductoController@Post_Create');
+    Route::post('edit', 'ProductoController@Post_Edit');
     Route::get('lista', 'ProductoController@Get_ListaProductos');
     Route::get('images/{producto}', 'ProductoController@Get_ListaProductoImages');
 });
