@@ -44,7 +44,7 @@ class AuthController extends Controller
         $user->contrasenia =  $data[0]->contrasenia;
         $user->username     =  $data[0]->username;
         $user->email        =  $data[0]->email;
-
+        //Token
         $token = auth()->login($user);
         $message = "login_valid";
         return $this->respondWithToken($token, $message);
